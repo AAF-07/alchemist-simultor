@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://chp0ypum34gsn"]
+
+[ext_resource type="Texture2D" uid="uid://cssdaslcuikk" path="res://icon.svg" id="1_yx0xu"]
+[ext_resource type="Script" uid="uid://h5mhuu7xsqee" path="res://Script/Craft/crafting_item_trigger.gd" id="2_aajfc"]
+[ext_resource type="Script" uid="uid://ccq1emvdrxoxo" path="res://Script/Craft/crafting_manager.gd" id="2_wocal"]
+[ext_resource type="Script" uid="uid://bh4bsan18cs2o" path="res://Script/Craft/item_data.gd" id="3_pkw46"]
+[ext_resource type="Script" uid="uid://bgvybc7jjid2h" path="res://Script/slot.gd" id="5_7bu0d"]
+[ext_resource type="Script" uid="uid://bw6co3x3lygbt" path="res://Script/Craft/signal_bus.gd" id="6_7bu0d"]
+
+[sub_resource type="Resource" id="Resource_58uus"]
+script = ExtResource("3_pkw46")
+item_name = "Heat"
+texture = ExtResource("1_yx0xu")
+metadata/_custom_type_script = "uid://bh4bsan18cs2o"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx0xu"]
+bg_color = Color(0, 0, 0, 0.25882354)
+
+[sub_resource type="Resource" id="Resource_wocal"]
+script = ExtResource("3_pkw46")
+item_name = "Heat"
+texture = ExtResource("1_yx0xu")
+metadata/_custom_type_script = "uid://bh4bsan18cs2o"
+
+[sub_resource type="Resource" id="Resource_7bu0d"]
+script = ExtResource("3_pkw46")
+item_name = "Cold"
+texture = ExtResource("1_yx0xu")
+metadata/_custom_type_script = "uid://bh4bsan18cs2o"
+
+[sub_resource type="Resource" id="Resource_ldion"]
+script = ExtResource("3_pkw46")
+item_name = "Strong"
+texture = ExtResource("1_yx0xu")
+metadata/_custom_type_script = "uid://bh4bsan18cs2o"
+
+[node name="Node2D" type="Node2D" unique_id=1377122879]
+
+[node name="Control" type="Control" parent="." unique_id=521180224 node_paths=PackedStringArray("custom_cursor", "slots", "result_slot")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("2_wocal")
+custom_cursor = NodePath("CustomCursor")
+slots = [NodePath("GridContainer/Slot 1"), NodePath("GridContainer/Slot 2"), NodePath("GridContainer/Slot 3")]
+recipe_results = Array[ExtResource("3_pkw46")]([SubResource("Resource_58uus")])
+recipes = Array[String](["Heat,Heat,Heat,"])
+result_slot = NodePath("ResultSlot")
+metadata/_edit_use_anchors_ = true
+
+[node name="Request" type="Label" parent="Control" unique_id=938911756]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033854168
+anchor_top = 0.083333336
+anchor_right = 0.26822916
+anchor_bottom = 0.47839507
+theme_override_styles/normal = SubResource("StyleBoxFlat_yx0xu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Recipe" type="Label" parent="Control" unique_id=106409986]
+layout_mode = 0
+anchor_left = 0.3046875
+anchor_top = 0.083333336
+anchor_right = 0.6727431
+anchor_bottom = 0.5046296
+theme_override_styles/normal = SubResource("StyleBoxFlat_yx0xu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" type="Label" parent="Control" unique_id=1356916981]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6996528
+anchor_top = 0.083333336
+anchor_right = 0.953125
+anchor_bottom = 0.8425926
+theme_override_styles/normal = SubResource("StyleBoxFlat_yx0xu")
+
+[node name="MenuBar" type="GridContainer" parent="Control/Inventory" unique_id=1134377228]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.006849315
+anchor_top = 0.016260162
+anchor_right = 0.9931508
+anchor_bottom = 1.0
+offset_right = -3.0517578e-05
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="heat" type="TextureRect" parent="Control/Inventory/MenuBar" unique_id=2071850837]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_yx0xu")
+expand_mode = 3
+script = ExtResource("2_aajfc")
+item_data = SubResource("Resource_wocal")
+
+[node name="Cold" type="TextureRect" parent="Control/Inventory/MenuBar" unique_id=1679126535]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_yx0xu")
+script = ExtResource("2_aajfc")
+item_data = SubResource("Resource_7bu0d")
+
+[node name="Strong" type="TextureRect" parent="Control/Inventory/MenuBar" unique_id=1521893671]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_yx0xu")
+script = ExtResource("2_aajfc")
+item_data = SubResource("Resource_ldion")
+
+[node name="GridContainer" type="GridContainer" parent="Control" unique_id=986541483]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 25.0
+offset_right = 144.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="Slot 1" type="TextureRect" parent="Control/GridContainer" unique_id=272179498]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_7bu0d")
+
+[node name="Slot 2" type="TextureRect" parent="Control/GridContainer" unique_id=160314759]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_7bu0d")
+slot_index = 1
+
+[node name="Slot 3" type="TextureRect" parent="Control/GridContainer" unique_id=2058652648]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("5_7bu0d")
+slot_index = 2
+
+[node name="ResultSlot" type="TextureRect" parent="Control" unique_id=816723286]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = 111.0
+offset_right = 68.0
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CustomCursor" type="TextureRect" parent="Control" unique_id=1328376137]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_7bu0d")

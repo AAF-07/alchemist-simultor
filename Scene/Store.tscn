@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dlmpr0t6svyd0"]
+
+[ext_resource type="Texture2D" uid="uid://cssdaslcuikk" path="res://icon.svg" id="1_f2e6p"]
+[ext_resource type="Script" uid="uid://t57f2e1bycey" path="res://Script/store.gd" id="1_vi3ad"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vi3ad"]
+texture = ExtResource("1_f2e6p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fl1jn"]
+texture = ExtResource("1_f2e6p")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi3ad"]
+bg_color = Color(0, 0, 0, 0.25882354)
+
+[node name="Node2D" type="Node2D" unique_id=756740313]
+script = ExtResource("1_vi3ad")
+
+[node name="Control" type="Control" parent="." unique_id=808680215]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 645.0
+
+[node name="Button" type="Node" parent="Control" unique_id=1749548482]
+
+[node name="ToFarm" type="Button" parent="Control/Button" unique_id=1990830993]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -134.0
+offset_right = 139.0
+offset_bottom = -34.0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_vi3ad")
+
+[node name="ToLab" type="Button" parent="Control/Button" unique_id=1018460791]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -86.5
+offset_top = -86.0
+offset_right = 86.5
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fl1jn")
+
+[node name="Day" type="Label" parent="Control" unique_id=105907480]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 30.0
+offset_right = 347.0
+offset_bottom = 61.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vi3ad")
+text = "Day - 1"
+vertical_alignment = 1
+
+[node name="Coin" type="Label" parent="Control" unique_id=1529104863]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 66.0
+offset_right = 347.0
+offset_bottom = 97.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vi3ad")
+text = "Coin = 0 "
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Button/ToFarm" to="." method="_on_to_farm_pressed"]
+[connection signal="pressed" from="Control/Button/ToLab" to="." method="_on_to_lab_pressed"]
